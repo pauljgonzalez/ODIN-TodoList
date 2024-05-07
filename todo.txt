@@ -1,0 +1,6 @@
+1. modal for project and task popup
+2. composition watch video on
+3. make a general project and add it on the page
+4. need unique identifers for all - use uuid npm
+
+projects need a task option that tasks get stored to
