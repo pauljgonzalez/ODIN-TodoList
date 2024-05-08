@@ -1,20 +1,31 @@
 import { v4 as uuidv4 } from 'uuid';
-import {Task} from "./tasks.js"
+import {newTask} from "./tasks.js"
 
-export function newProject(){
+
+export const projectManager = (function() {
+    // Private variables
+    const projects = [];
     
-}
-class Project{
-    constructor(name){
-        this.name = name;
-        this.id = uuidv4()
-        this.tasks = []
+
+    // Public functions exposed via returned object
+    function getProjects() {
+        return projects.slice(); // Return a copy of projects to prevent direct modification
     }
-}
-const projects = []
 
-projects[0] = new Project("General")
-// console.log(projects[0])
+    function newProject(name) {
+        const project = {
+            name: name,
+            id: uuidv4(),
+            tasks: []
+        };
+        projects.push(project);
+    }
 
-projects[0].tasks.push(new Task("test"))
-console.log(projects[0].tasks[0].name)
+    // Return only necessary functions
+    return {
+        getProjects,
+        newProject
+    };
+    
+})();
+

@@ -46,7 +46,7 @@ button {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 32px;
+    padding: 5%;
     background-color: var(--accentColorTwo);
 }
 .header { 
@@ -66,4 +66,16 @@ button {
     display: flex;
     flex-direction: column;
     gap: 16px;
+}
+#projects{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.largeText{
+    font-size: 2rem;
+    font-weight: bold;
+}
+.project{
+    font-size: 1.25rem;
 }
