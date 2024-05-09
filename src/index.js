@@ -10,7 +10,7 @@ document.querySelector(".tog").addEventListener("click",() =>{
     toggleMode();
 });
 document.querySelector("#newTask").addEventListener("click",() => {
-    newModal("Task");
+    //newModal("Task");
 })
 document.querySelector("#newTask").addEventListener("click",() =>{
     document.querySelector("#newTaskModal").showModal();
@@ -38,7 +38,26 @@ document.querySelector("#addProjectButton").addEventListener("click",() =>{
 document.getElementById('newProjectModal').addEventListener("close", () =>{
     document.querySelector("#projectForm").reset() 
 });
-
+document.querySelector("#addTaskButton").addEventListener("click",() =>{
+    let title = document.querySelector("#taskTitle")
+    let description = document.querySelector("#taskDescription")
+    let id = document.querySelector("#taskProject")
+   if(title.value == "" || description.value == ""){
+       return false
+    }
+    const projects = projectManager.getProjects()
+    projects.forEach((project) =>{
+        if(project.id === id.value){
+            newTask(project.id,title.value,description.value)
+            updateTasksDOM(project.id)
+            document.querySelector("#updateProjectTitle").innerHTML = project.name
+            document.querySelector("#updateProjectDescription").innerHTML = project.description
+        }
+    })
+})
+document.getElementById('newTaskModal').addEventListener("close", () =>{
+    document.querySelector("#taskForm").reset() 
+});
 
 
 projectManager.newProject("General","General Tasks Go Here"); 
