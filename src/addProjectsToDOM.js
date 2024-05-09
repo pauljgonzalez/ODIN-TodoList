@@ -1,12 +1,20 @@
 import {projectManager} from "./projects.js";
-import {createProjectDIV} from "./createElements.js";
+import {createProjectDIV,createProjectButton} from "./createElements.js";
 
 function createProjectFrag(){
     const projects = projectManager.getProjects()
     const frag = new DocumentFragment();
     projects.forEach((project) => {
-        const div = createProjectDIV(project.name,project.id);
-        frag.append(div)
+        const button = createProjectButton(project.name,project.id);
+        button.addEventListener("click",() =>{
+            // TO DO
+            //open this project ids task in the task area 
+            console.log(project.id)
+            document.querySelector("#updateProjectTitle").innerHTML = project.name
+            document.querySelector("#updateProjectDescription").innerHTML = project.description
+
+        });
+        frag.append(button)
     });
     return frag;
 }
@@ -26,6 +34,7 @@ export function updateTaskModal(){
 
 export function updateProjectsDOM(){
     const frag = createProjectFrag();
+    document.querySelector('#projects').innerHTML = "";
     document.querySelector('#projects').append(frag)
 }
 

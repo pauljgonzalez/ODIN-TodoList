@@ -6,6 +6,11 @@ export function createProjectDIV(name,id){
     return newDIV;
 }
 
-export function createProjectDIVTaskNumber(){
-
+export function createProjectButton(name,id){
+    const newButton = document.createElement("button");
+    newButton.className = "project";
+    newButton.id = id;
+    newButton.innerHTML = name;
+    return newButton;
 }
+

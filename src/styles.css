@@ -1,6 +1,6 @@
-/* * {
+* {
     outline: red solid 1px;
-}   */
+}   
 body{
     --backgroundColor : #fffffe;
     --textColor : #16161a;
@@ -56,6 +56,20 @@ button {
 .mainSection { 
     grid-area: 2 / 2 / 6 / 6; 
     color: #16161a;
+    display: flex;
+    flex-direction: column;
+    padding: 2%;
+    gap: 10px;
+}
+.titles{
+    font-size: 3rem;
+    font-weight: bold;
+}
+.descriptions{
+    font-size: 1.5rem;
+}
+#tasksUpdate{
+    margin-top: 2%;
 }
 .options{
     display: flex;
@@ -96,7 +110,7 @@ button {
     align-items: center;
     justify-content: center;
 }
-.close-button{
+.modal-container>.close-button{
     position: relative;
     left: 30%;
     bottom: 2vh;

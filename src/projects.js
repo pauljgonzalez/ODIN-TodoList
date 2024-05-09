@@ -12,11 +12,12 @@ export const projectManager = (function() {
         return projects.slice(); // Return a copy of projects to prevent direct modification
     }
 
-    function newProject(name) {
+    function newProject(name, description) {
         const project = {
             name: name,
             id: uuidv4(),
-            tasks: []
+            tasks: [],
+            description: description
         };
         projects.push(project);
     }
