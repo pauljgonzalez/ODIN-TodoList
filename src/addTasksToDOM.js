@@ -9,10 +9,6 @@ function createTaskFrag(ID){
         if (project.id === ID){
             const tasks = project.tasks
             tasks.forEach((task) =>{
-                // const container = createProjectDivNoID("taskContainer")
-                // const taskTitle = createTaskstDIV("taskTitle",task.title,task.id)
-                // const taskDescription = createTaskstDIVNoID("taskDescription",task.description)
-                // const taskButton = createTaskCloseButton()
                 const container = createTaskNoInner("taskContainer",task.id)
 
                 const taskTitle = createTaskstDIVNoID("taskTitle",task.title)

@@ -45,6 +45,7 @@ export function createTaskCloseButton(){
     newButton.className = "taskCloseButton";
     newButton.innerHTML = "X";
     newButton.addEventListener("click",() =>{
+        //console.log(newButton.parentElement.id)
         removeTask(newButton.parentElement.id)
     });
     return newButton;

@@ -2,7 +2,6 @@ import "./styles.css";
 import {toggleMode} from "./toggleMode.js";
 import {newTask} from "./tasks.js";
 import {projectManager} from "./projects.js";
-import {newModal} from "./modal.js";
 import {updateProjectsDOM, updateTaskModal} from "./addProjectsToDOM.js";
 import {updateTasksDOM} from "./addTasksToDOM.js";
 

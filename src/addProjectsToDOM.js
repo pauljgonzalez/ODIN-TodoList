@@ -8,9 +8,7 @@ function createProjectFrag(){
     projects.forEach((project) => {
         const button = createProjectButton(project.name,project.id);
         button.addEventListener("click",() =>{
-            // TO DO
-            //open this project ids task in the task area 
-            console.log(project.id)
+            //console.log(project.id)
             document.querySelector("#updateProjectTitle").innerHTML = project.name
             document.querySelector("#updateProjectTitle").className = project.id
             document.querySelector("#updateProjectDescription").innerHTML = project.description 

@@ -27,12 +27,12 @@ export function removeTask(taskID){
     projects.forEach((project) =>{
         if(project.id === document.querySelector("#updateProjectTitle").className){
             const tasks = project.tasks;
-            tasks.forEach((task) =>{
+            tasks.forEach((task,index) =>{
                 if(task.id === taskID){
-                    tasks.pop(task)
+                    project.tasks.splice(index,1)
                     document.getElementById(taskID).remove()
                 }
-                console.log(tasks)
+                
             })
         }
     })
