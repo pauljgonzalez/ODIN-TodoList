@@ -4,7 +4,7 @@ import {newTask} from "./tasks.js";
 import {projectManager} from "./projects.js";
 import {newModal} from "./modal.js";
 import {updateProjectsDOM, updateTaskModal} from "./addProjectsToDOM.js";
-
+import {updateTasksDOM} from "./addTasksToDOM.js";
 
 document.querySelector(".tog").addEventListener("click",() =>{
     toggleMode();
@@ -30,18 +30,24 @@ document.querySelector("#addProjectButton").addEventListener("click",() =>{
     if(title.value == "" || description.value == ""){
         return false
     }
-    projectManager.newProject(title.value); 
+    projectManager.newProject(title.value,description.value);  
     updateProjectsDOM()
     updateTaskModal()
     document.querySelector("#newProjectModal").close();
 })
+document.getElementById('newProjectModal').addEventListener("close", () =>{
+    document.querySelector("#projectForm").reset() 
+});
+
 
 
 projectManager.newProject("General","General Tasks Go Here"); 
 document.querySelector("#updateProjectTitle").innerHTML = projectManager.getProjects()[0].name
 document.querySelector("#updateProjectDescription").innerHTML = projectManager.getProjects()[0].description
-newTask(projectManager.getProjects()[0].id, "Test")
-//console.log(projectManager.getProjects()[0].tasks)
+newTask(projectManager.getProjects()[0].id, "This is where Titles Go", "This is where descriptions go")
+newTask(projectManager.getProjects()[0].id, "This is where Titles Go", "This is where descriptions go")
+//console.log(projectManager.getProjects()[0].tasks[0])
 updateProjectsDOM()
 updateTaskModal()
+updateTasksDOM(projectManager.getProjects()[0].id)
 

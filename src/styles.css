@@ -1,6 +1,6 @@
-* {
+/* * {
     outline: red solid 1px;
-}   
+}    */
 body{
     --backgroundColor : #fffffe;
     --textColor : #16161a;
@@ -59,7 +59,7 @@ button {
     display: flex;
     flex-direction: column;
     padding: 2%;
-    gap: 10px;
+    gap: 5px;
 }
 .titles{
     font-size: 3rem;
@@ -67,9 +67,33 @@ button {
 }
 .descriptions{
     font-size: 1.5rem;
+    margin-left: 1.5%;
+}
+.projectTitleArea{
+    background-color: var(--accentColor);
+    border-radius: 16px;
+    padding: 10px;
+}
+.taskContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 5px;
+    background-color: var(--accentColor);
+    border-radius: 16px;
+}
+.taskTitle{
+    font-size: 1.75rem;
+}
+.taskDescription{
+    font-size: 1.15rem;
+    margin-left: 3%;
 }
 #tasksUpdate{
-    margin-top: 2%;
+    margin-top: 4%;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
 }
 .options{
     display: flex;

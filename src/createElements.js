@@ -5,6 +5,11 @@ export function createProjectDIV(name,id){
     newDIV.innerHTML = name;
     return newDIV;
 }
+export function createProjectDivNoID(name){
+    const newDIV = document.createElement("div");
+    newDIV.className = name;
+    return newDIV;
+}
 
 export function createProjectButton(name,id){
     const newButton = document.createElement("button");
@@ -14,3 +19,16 @@ export function createProjectButton(name,id){
     return newButton;
 }
 
+export function createTaskstDIV(classname,name,id){
+    const newDIV = document.createElement("div");
+    newDIV.className = classname;
+    newDIV.id = id;
+    newDIV.innerHTML = name;
+    return newDIV;
+}
+export function createTaskstDIVNoID(classname,name){
+    const newDIV = document.createElement("div");
+    newDIV.className = classname;
+    newDIV.innerHTML = name;
+    return newDIV;
+}

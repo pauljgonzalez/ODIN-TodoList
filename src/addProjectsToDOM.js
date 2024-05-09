@@ -1,5 +1,6 @@
 import {projectManager} from "./projects.js";
 import {createProjectDIV,createProjectButton} from "./createElements.js";
+import {updateTasksDOM} from "./addTasksToDOM.js";
 
 function createProjectFrag(){
     const projects = projectManager.getProjects()
@@ -11,8 +12,8 @@ function createProjectFrag(){
             //open this project ids task in the task area 
             console.log(project.id)
             document.querySelector("#updateProjectTitle").innerHTML = project.name
-            document.querySelector("#updateProjectDescription").innerHTML = project.description
-
+            document.querySelector("#updateProjectDescription").innerHTML = project.description 
+            updateTasksDOM(project.id)
         });
         frag.append(button)
     });
