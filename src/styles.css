@@ -61,11 +61,11 @@ button {
     padding: 2%;
     gap: 5px;
 }
-.titles{
+#updateProjectTitle{
     font-size: 3rem;
     font-weight: bold;
 }
-.descriptions{
+#updateProjectDescription{
     font-size: 1.5rem;
     margin-left: 1.5%;
 }
@@ -74,20 +74,43 @@ button {
     border-radius: 16px;
     padding: 10px;
 }
+
+.highPrio{
+    outline: solid 3px red;
+}
+.normalPrio{
+    outline: solid 3px orange;
+}
+.lowPrio{
+    outline: solid 3px blue;
+}
 .taskContainer{
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+    /* display: flex;
+    flex-direction: column; */
+    display: grid;
+    grid-template-columns: 3% 97%;
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 10px;
+    grid-row-gap: 5px;
+    
     padding: 5px;
     background-color: var(--accentColor);
     border-radius: 16px;
 }
 .taskTitle{
     font-size: 1.75rem;
+    grid-area: 1 / 2 / 2 / 3;
 }
 .taskDescription{
     font-size: 1.15rem;
     margin-left: 3%;
+    grid-area: 2 / 2 / 3 / 3;
+}
+.taskCloseButton{
+    background-color: var(--backgroundColor);
+    grid-area: 1 / 1 / 3 / 2;
+    height: 80%;
+    align-self: center;
 }
 #tasksUpdate{
     margin-top: 4%;

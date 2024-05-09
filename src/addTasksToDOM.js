@@ -1,5 +1,6 @@
 import {projectManager} from "./projects.js";
-import {createProjectDIV,createProjectButton,createProjectDivNoID,createTaskstDIV,createTaskstDIVNoID} from "./createElements.js";
+import {createProjectDIV,createProjectButton,createProjectDivNoID,createTaskstDIV,createTaskstDIVNoID,createTaskCloseButton,createTaskNoInner} from "./createElements.js";
+import {removeTask} from "./tasks.js";
 
 function createTaskFrag(ID){
     const projects = projectManager.getProjects()
@@ -8,11 +9,21 @@ function createTaskFrag(ID){
         if (project.id === ID){
             const tasks = project.tasks
             tasks.forEach((task) =>{
-                const container = createProjectDivNoID("taskContainer")
-                const taskTitle = createTaskstDIV("taskTitle",task.title,task.id)
+                // const container = createProjectDivNoID("taskContainer")
+                // const taskTitle = createTaskstDIV("taskTitle",task.title,task.id)
+                // const taskDescription = createTaskstDIVNoID("taskDescription",task.description)
+                // const taskButton = createTaskCloseButton()
+                const container = createTaskNoInner("taskContainer",task.id)
+
+                const taskTitle = createTaskstDIVNoID("taskTitle",task.title)
+
                 const taskDescription = createTaskstDIVNoID("taskDescription",task.description)
+
+                const taskButton = createTaskCloseButton()
+                
                 container.append(taskTitle);
                 container.append(taskDescription);
+                container.append(taskButton)
                 frag.append(container)
             })
         }

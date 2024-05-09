@@ -19,6 +19,21 @@ export function newTask(projectID,taskName,description){
             project.tasks.push(addTask)
         }
     });
-
 }
 
+export function removeTask(taskID){
+    //console.log(taskID)
+    const projects = projectManager.getProjects()
+    projects.forEach((project) =>{
+        if(project.id === document.querySelector("#updateProjectTitle").className){
+            const tasks = project.tasks;
+            tasks.forEach((task) =>{
+                if(task.id === taskID){
+                    tasks.pop(task)
+                    document.getElementById(taskID).remove()
+                }
+                console.log(tasks)
+            })
+        }
+    })
+}

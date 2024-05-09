@@ -60,11 +60,12 @@ document.getElementById('newTaskModal').addEventListener("close", () =>{
 });
 
 
-projectManager.newProject("General","General Tasks Go Here"); 
+projectManager.newProject("General","This is where the description goes"); 
 document.querySelector("#updateProjectTitle").innerHTML = projectManager.getProjects()[0].name
 document.querySelector("#updateProjectDescription").innerHTML = projectManager.getProjects()[0].description
-newTask(projectManager.getProjects()[0].id, "This is where Titles Go", "This is where descriptions go")
-newTask(projectManager.getProjects()[0].id, "This is where Titles Go", "This is where descriptions go")
+document.querySelector("#updateProjectTitle").className = projectManager.getProjects()[0].id
+newTask(projectManager.getProjects()[0].id, "This is where Task Titles Go", "This is where Task descriptions go")
+newTask(projectManager.getProjects()[0].id, "This is where Task Titles Go2", "This is where Task descriptions go2")
 //console.log(projectManager.getProjects()[0].tasks[0])
 updateProjectsDOM()
 updateTaskModal()

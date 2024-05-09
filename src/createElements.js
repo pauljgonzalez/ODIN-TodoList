@@ -1,3 +1,5 @@
+import {removeTask} from "./tasks.js";
+
 export function createProjectDIV(name,id){
     const newDIV = document.createElement("div");
     newDIV.className = "project";
@@ -31,4 +33,19 @@ export function createTaskstDIVNoID(classname,name){
     newDIV.className = classname;
     newDIV.innerHTML = name;
     return newDIV;
+}
+export function createTaskNoInner(classname,ID){
+    const newDIV = document.createElement("div");
+    newDIV.className = classname;
+    newDIV.id = ID;
+    return newDIV;
+}
+export function createTaskCloseButton(){
+    const newButton = document.createElement("button");
+    newButton.className = "taskCloseButton";
+    newButton.innerHTML = "X";
+    newButton.addEventListener("click",() =>{
+        removeTask(newButton.parentElement.id)
+    });
+    return newButton;
 }
