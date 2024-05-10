@@ -1,6 +1,8 @@
 import {projectManager} from "./projects.js";
 import {createProjectDIV,createProjectButton} from "./createElements.js";
 import {updateTasksDOM} from "./addTasksToDOM.js";
+import {getProjID, getTaskID, setProjID, setTaskID} from "./checkIDs.js";
+
 
 function createProjectFrag(){
     const projects = projectManager.getProjects()
@@ -12,6 +14,7 @@ function createProjectFrag(){
             document.querySelector("#updateProjectTitle").innerHTML = project.name
             document.querySelector("#updateProjectTitle").className = project.id
             document.querySelector("#updateProjectDescription").innerHTML = project.description 
+            setProjID(project.id)
             updateTasksDOM(project.id)
         });
         frag.append(button)

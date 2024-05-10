@@ -1,5 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 import {projectManager} from "./projects.js";
+import {getProject,getTask} from "./checkIDs.js"
 
 export class Task{
     constructor(title,description){
@@ -8,7 +9,6 @@ export class Task{
         this.description = description;
     }
 }
-
 //loop through each project and check for id. if id matches add task
 export function newTask(projectID,taskName,description){
     const projects = projectManager.getProjects();
@@ -20,7 +20,6 @@ export function newTask(projectID,taskName,description){
         }
     });
 }
-
 export function removeTask(taskID){
     //console.log(taskID)
     const projects = projectManager.getProjects()
@@ -32,7 +31,20 @@ export function removeTask(taskID){
                     project.tasks.splice(index,1)
                     document.getElementById(taskID).remove()
                 }
-                
+            })
+        }
+    })
+}
+export function editTask(updTitle,updDescription,priority,projectID,taskID){
+    const projects = projectManager.getProjects()
+    projects.forEach((project) =>{
+        if(project.id === projectID){
+            const tasks = project.tasks;
+            tasks.forEach((task)=>{
+                if (task.id === taskID){
+                    task.title = updTitle;
+                    task.description = updDescription;
+                }
             })
         }
     })

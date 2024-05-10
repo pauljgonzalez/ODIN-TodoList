@@ -1,5 +1,5 @@
 import {projectManager} from "./projects.js";
-import {createProjectDIV,createProjectButton,createProjectDivNoID,createTaskstDIV,createTaskstDIVNoID,createTaskCloseButton,createTaskNoInner} from "./createElements.js";
+import {createProjectDIV,createProjectButton,createProjectDivNoID,createTaskstDIV,createTaskstDIVNoID,createTaskCloseButton,createTaskNoInner,createEditTaskButton} from "./createElements.js";
 import {removeTask} from "./tasks.js";
 
 function createTaskFrag(ID){
@@ -9,17 +9,17 @@ function createTaskFrag(ID){
         if (project.id === ID){
             const tasks = project.tasks
             tasks.forEach((task) =>{
-                const container = createTaskNoInner("taskContainer",task.id)
+                const container = createTaskNoInner("taskContainer",task.id);
+                const taskTitle = createTaskstDIVNoID("taskTitle",task.title);
+                const taskDescription = createTaskstDIVNoID("taskDescription",task.description);
+                const taskButton = createTaskCloseButton();
+                const editButton = createEditTaskButton();
+                //TODO Add edit button to edit task.title and task.descrpition posttion to right. would need to update grid and make css
 
-                const taskTitle = createTaskstDIVNoID("taskTitle",task.title)
-
-                const taskDescription = createTaskstDIVNoID("taskDescription",task.description)
-
-                const taskButton = createTaskCloseButton()
-                
                 container.append(taskTitle);
                 container.append(taskDescription);
                 container.append(taskButton)
+                container.append(editButton)
                 frag.append(container)
             })
         }

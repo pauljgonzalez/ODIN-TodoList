@@ -54,6 +54,23 @@
                           <button id="addProjectButton" class="close-button"  type="submit">Add Project</button>
                         </form>
                       </dialog>
+
+                      <dialog class="modal editTaskModal" id="editTaskModal">
+                        <div class="modal-container">
+                            <h2>Edit Task  </h2>
+                            <button class="button close-button">X</button>
+                        </div>
+                        <form class="form" id="editTaskForm" method="dialog">
+                          <label for="editTaskTitle">&nbsp &nbsp &nbsp &nbsp &nbsp Title<input type="text" id="editTaskTitle" name="editTaskTitle" required></label>
+                          <label for="editTaskDescription">Description<input type="text"id="editTaskDescription" name="editTaskDescription" required></label>
+                          <label for="editTaskPriority">Priority<select id="editTaskPriority" name="editTaskPriority">
+                            <option value="priorityHigh">High Priority</option>
+                            <option value="priorityNormal" selected>Normal Priority</option>
+                            <option value="priorityLow">Low Priority</option>
+                          </label>
+                          <button id="editTaskButtonForm" type="submit">Edit Task</button>
+                        </form>
+                      </dialog>
         
                     <div class="sidebarSection">
                         <div class="projectList largeText" >Projects</div>

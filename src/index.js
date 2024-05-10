@@ -1,10 +1,12 @@
 import "./styles.css";
 import {toggleMode} from "./toggleMode.js";
-import {newTask} from "./tasks.js";
+import {newTask,editTask} from "./tasks.js";
 import {projectManager} from "./projects.js";
 import {updateProjectsDOM, updateTaskModal} from "./addProjectsToDOM.js";
 import {updateTasksDOM} from "./addTasksToDOM.js";
-
+import {getParentID} from "./getDOM.js";
+import {getProjID, getTaskID, setProjID, setTaskID} from "./checkIDs.js";
+let parentElementId;
 document.querySelector(".tog").addEventListener("click",() =>{
     toggleMode();
 });
@@ -63,10 +65,43 @@ projectManager.newProject("General","This is where the description goes");
 document.querySelector("#updateProjectTitle").innerHTML = projectManager.getProjects()[0].name
 document.querySelector("#updateProjectDescription").innerHTML = projectManager.getProjects()[0].description
 document.querySelector("#updateProjectTitle").className = projectManager.getProjects()[0].id
+setProjID(projectManager.getProjects()[0].id)
 newTask(projectManager.getProjects()[0].id, "This is where Task Titles Go", "This is where Task descriptions go")
-newTask(projectManager.getProjects()[0].id, "This is where Task Titles Go2", "This is where Task descriptions go2")
-//console.log(projectManager.getProjects()[0].tasks[0])
 updateProjectsDOM()
 updateTaskModal()
 updateTasksDOM(projectManager.getProjects()[0].id)
 
+// document.querySelectorAll(".editTaskButton").addEventListener("click",(event) =>{
+//     console.log(event.target.parentNode.id)
+//     d
+    
+// })
+document.getElementById('editTaskModal').addEventListener("close", () =>{
+    document.querySelector("#editTaskForm").reset() 
+});
+document.querySelector("#editTaskModal>.modal-container>.close-button").addEventListener("click",() =>{
+    document.querySelector("#editTaskModal").close();
+ })
+document.getElementById("editTaskButtonForm").addEventListener("click", () =>{
+    //submit change
+    let title = document.querySelector("#editTaskTitle").value
+    let description = document.querySelector("#editTaskDescription").value
+    let priority 
+    if(title == "" || description == ""){
+        return false
+    }
+    editTask(title,description,priority,getProjID(),getTaskID());
+    const container = document.getElementById(getTaskID());
+    const projects = projectManager.getProjects();
+    projects.forEach((project) =>{
+        if(project.id === getProjID()){
+            const tasks = project.tasks;
+            tasks.forEach((task)=>{
+                if (task.id === getTaskID()){
+                    container.querySelector('.taskTitle').innerHTML  = task.title
+                    container.querySelector('.taskDescription').innerHTML = task.description
+                }
+            })
+        }
+    })
+})

@@ -1,5 +1,5 @@
-import {removeTask} from "./tasks.js";
-
+import {removeTask,editTask} from "./tasks.js";
+import {getProjID, getTaskID, setProjID, setTaskID} from "./checkIDs.js";
 export function createProjectDIV(name,id){
     const newDIV = document.createElement("div");
     newDIV.className = "project";
@@ -47,6 +47,17 @@ export function createTaskCloseButton(){
     newButton.addEventListener("click",() =>{
         //console.log(newButton.parentElement.id)
         removeTask(newButton.parentElement.id)
+    });
+    return newButton;
+}
+export function createEditTaskButton(){
+    const newButton = document.createElement("button");
+    newButton.className = "editTaskButton";
+    newButton.innerHTML = "Edit";
+    newButton.addEventListener("click",(event) =>{
+        const parentID = event.target.parentNode.id
+        setTaskID(parentID)
+        document.querySelector("#editTaskModal").showModal();
     });
     return newButton;
 }
