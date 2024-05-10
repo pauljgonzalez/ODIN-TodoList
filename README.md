@@ -7,3 +7,6 @@ How It's Made: Tech used: HTML, CSS, JavaScript, Webpack
 
 Lessons Learned:
 
+How to use webpack better.
+How to bundle/organize code. Still need to refactor this as I can see a lot of repeat code.
+Toggle theme. Allthough my colors right now do not look good. Not a designer
