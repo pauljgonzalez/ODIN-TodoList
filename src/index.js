@@ -51,6 +51,7 @@ document.querySelector("#addTaskButton").addEventListener("click",() =>{
         if(project.id === id.value){
             newTask(project.id,title.value,description.value)
             updateTasksDOM(project.id)
+            document.querySelector("#updateProjectTitle").className = id.value
             document.querySelector("#updateProjectTitle").innerHTML = project.name
             document.querySelector("#updateProjectDescription").innerHTML = project.description
         }
@@ -90,18 +91,20 @@ document.getElementById("editTaskButtonForm").addEventListener("click", () =>{
     if(title == "" || description == ""){
         return false
     }
-    editTask(title,description,priority,getProjID(),getTaskID());
+    editTask(title,description,priority,document.querySelector("#updateProjectTitle").className,getTaskID());
     const container = document.getElementById(getTaskID());
     const projects = projectManager.getProjects();
     projects.forEach((project) =>{
-        if(project.id === getProjID()){
+        if(project.id === document.querySelector("#updateProjectTitle".className)){
             const tasks = project.tasks;
             tasks.forEach((task)=>{
                 if (task.id === getTaskID()){
                     container.querySelector('.taskTitle').innerHTML  = task.title
-                    container.querySelector('.taskDescription').innerHTML = task.description
+                    container.querySelector('.taskDescription').innerHTML = task.descriptio
                 }
             })
         }
     })
+    updateTasksDOM(document.querySelector("#updateProjectTitle").className)
 })
+

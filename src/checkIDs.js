@@ -24,7 +24,7 @@ export function getTask(projectID){
 //can use that index to edit text and description
 
 
-let projectId = "test";
+let projectId = "";
 let taskId = "";
 
 export const getProjID = () => {

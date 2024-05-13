@@ -49,3 +49,5 @@ export function editTask(updTitle,updDescription,priority,projectID,taskID){
         }
     })
 }
+
+//not updating project iD when making new task in new project from current one
