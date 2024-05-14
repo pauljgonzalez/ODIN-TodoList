@@ -20,6 +20,12 @@ export function createProjectButton(name,id){
     newButton.innerHTML = name;
     return newButton;
 }
+export function createProjectButtonNoID(name,inner){
+    const newButton = document.createElement("button");
+    newButton.className = name;
+    newButton.innerHTML = inner;
+    return newButton;
+}
 
 export function createTaskstDIV(classname,name,id){
     const newDIV = document.createElement("div");

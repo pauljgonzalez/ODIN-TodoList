@@ -1,5 +1,5 @@
 import {projectManager} from "./projects.js";
-import {createProjectDIV,createProjectButton} from "./createElements.js";
+import {createProjectDIV,createProjectButton, createProjectButtonNoID,createProjectDivNoID} from "./createElements.js";
 import {updateTasksDOM} from "./addTasksToDOM.js";
 import {getProjID, getTaskID, setProjID, setTaskID} from "./checkIDs.js";
 
@@ -8,6 +8,7 @@ function createProjectFrag(){
     const projects = projectManager.getProjects()
     const frag = new DocumentFragment();
     projects.forEach((project) => {
+        const projectContainer = createProjectDivNoID("projectSideBarContainer")
         const button = createProjectButton(project.name,project.id);
         button.addEventListener("click",() =>{
             //console.log(project.id)
@@ -17,7 +18,14 @@ function createProjectFrag(){
             setProjID(project.id)
             updateTasksDOM(project.id)
         });
-        frag.append(button)
+        const removeProjectButton = createProjectButtonNoID("removeProject","X")
+        removeProjectButton.addEventListener("click",()=>{
+            console.log("this should close the project" + project.id)
+        })
+        projectContainer.append(button)
+        projectContainer.append(removeProjectButton)
+        frag.append( projectContainer)
+        
     });
     return frag;
 }

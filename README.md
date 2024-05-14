@@ -10,3 +10,5 @@ Lessons Learned:
 How to use webpack better.
 How to bundle/organize code. Still need to refactor this as I can see a lot of repeat code.
 Toggle theme. Allthough my colors right now do not look good. Not a designer
+Looked into using BEM naming convention want to try and using that going foward to make it easier to read
+Getting a parent element of a node. 
