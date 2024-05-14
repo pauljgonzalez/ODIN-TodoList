@@ -44,9 +44,11 @@ document.querySelector("#addTaskButton").addEventListener("click",() =>{
     let description = document.querySelector("#taskDescription")
     let id = document.querySelector("#taskProject")
     let prio = document.querySelector("#taskPriority")
+    let dueDate = document.querySelector("#taskDueDate")
    if(title.value == "" || description.value == ""){
        return false
     }
+    console.log(dueDate.value)
     const projects = projectManager.getProjects()
     projects.forEach((project) =>{
         if(project.id === id.value){

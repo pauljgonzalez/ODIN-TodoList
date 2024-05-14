@@ -20,7 +20,8 @@ function createProjectFrag(){
         });
         const removeProjectButton = createProjectButtonNoID("removeProject","X")
         removeProjectButton.addEventListener("click",()=>{
-            console.log("this should close the project" + project.id)
+            let sibling = removeProjectButton.previousElementSibling.id
+            projectManager.removeProject(sibling)
         })
         projectContainer.append(button)
         projectContainer.append(removeProjectButton)
