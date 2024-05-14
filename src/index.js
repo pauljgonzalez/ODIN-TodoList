@@ -52,7 +52,7 @@ document.querySelector("#addTaskButton").addEventListener("click",() =>{
     const projects = projectManager.getProjects()
     projects.forEach((project) =>{
         if(project.id === id.value){
-            newTask(project.id,title.value,description.value,prio.value)
+            newTask(project.id,title.value,description.value,prio.value,dueDate.value)
             updateTasksDOM(project.id)
             document.querySelector("#updateProjectTitle").className = id.value
             document.querySelector("#updateProjectTitle").innerHTML = project.name
@@ -70,7 +70,14 @@ document.querySelector("#updateProjectTitle").innerHTML = projectManager.getProj
 document.querySelector("#updateProjectDescription").innerHTML = projectManager.getProjects()[0].description
 document.querySelector("#updateProjectTitle").className = projectManager.getProjects()[0].id
 setProjID(projectManager.getProjects()[0].id)
-newTask(projectManager.getProjects()[0].id, "This is where Task Titles Go", "This is where Task descriptions go","priorityNormal")
+//set Date for current date on first load
+let today = new Date();
+let dd = String(today.getDate()).padStart(2, '0');
+let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+let yyyy = today.getFullYear();
+let currentDate = yyyy + "-" + mm + "-" + dd;
+
+newTask(projectManager.getProjects()[0].id, "This is where Task Titles Go", "This is where Task descriptions go","priorityNormal",currentDate)
 updateProjectsDOM()
 updateTaskModal()
 updateTasksDOM(projectManager.getProjects()[0].id)

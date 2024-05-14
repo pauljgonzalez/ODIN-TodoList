@@ -14,6 +14,7 @@ function createTaskFrag(ID){
                 const taskDescription = createTaskstDIVNoID("taskDescription",task.description);
                 const taskButton = createTaskCloseButton();
                 const editButton = createEditTaskButton();
+                const dueDate = createTaskstDIVNoID("taskDueDate","Due Date: "+task.dueDate)
                 let prioInner = task.priority;
                 if(task.priority == "priorityNormal"){
                     prioInner = "Normal Priority";
@@ -30,6 +31,7 @@ function createTaskFrag(ID){
                 container.append(taskDescription);
                 container.append(taskButton)
                 container.append(editButton)
+                container.append(dueDate)
                 container.append(taskPrio)
                 frag.append(container)
             })
