@@ -38,7 +38,6 @@ export function removeTask(taskID){
 }
 export function editTask(updTitle,updDescription,priority,projectID,taskID){
     const projects = projectManager.getProjects()
-    console.log(priority)
     projects.forEach((project) =>{
         if(project.id === projectID){
             const tasks = project.tasks;
