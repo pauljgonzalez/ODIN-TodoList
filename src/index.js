@@ -43,13 +43,14 @@ document.querySelector("#addTaskButton").addEventListener("click",() =>{
     let title = document.querySelector("#taskTitle")
     let description = document.querySelector("#taskDescription")
     let id = document.querySelector("#taskProject")
+    let prio = document.querySelector("#taskPriority")
    if(title.value == "" || description.value == ""){
        return false
     }
     const projects = projectManager.getProjects()
     projects.forEach((project) =>{
         if(project.id === id.value){
-            newTask(project.id,title.value,description.value)
+            newTask(project.id,title.value,description.value,prio.value)
             updateTasksDOM(project.id)
             document.querySelector("#updateProjectTitle").className = id.value
             document.querySelector("#updateProjectTitle").innerHTML = project.name
@@ -67,27 +68,24 @@ document.querySelector("#updateProjectTitle").innerHTML = projectManager.getProj
 document.querySelector("#updateProjectDescription").innerHTML = projectManager.getProjects()[0].description
 document.querySelector("#updateProjectTitle").className = projectManager.getProjects()[0].id
 setProjID(projectManager.getProjects()[0].id)
-newTask(projectManager.getProjects()[0].id, "This is where Task Titles Go", "This is where Task descriptions go")
+newTask(projectManager.getProjects()[0].id, "This is where Task Titles Go", "This is where Task descriptions go","priorityNormal")
 updateProjectsDOM()
 updateTaskModal()
 updateTasksDOM(projectManager.getProjects()[0].id)
 
-// document.querySelectorAll(".editTaskButton").addEventListener("click",(event) =>{
-//     console.log(event.target.parentNode.id)
-//     d
-    
-// })
 document.getElementById('editTaskModal').addEventListener("close", () =>{
     document.querySelector("#editTaskForm").reset() 
 });
+
 document.querySelector("#editTaskModal>.modal-container>.close-button").addEventListener("click",() =>{
     document.querySelector("#editTaskModal").close();
  })
+
 document.getElementById("editTaskButtonForm").addEventListener("click", () =>{
     //submit change
     let title = document.querySelector("#editTaskTitle").value
     let description = document.querySelector("#editTaskDescription").value
-    let priority 
+    let priority = document.querySelector("#editTaskPriority").value
     if(title == "" || description == ""){
         return false
     }
@@ -100,7 +98,8 @@ document.getElementById("editTaskButtonForm").addEventListener("click", () =>{
             tasks.forEach((task)=>{
                 if (task.id === getTaskID()){
                     container.querySelector('.taskTitle').innerHTML  = task.title
-                    container.querySelector('.taskDescription').innerHTML = task.descriptio
+                    container.querySelector('.taskDescription').innerHTML = task.description
+                    
                 }
             })
         }

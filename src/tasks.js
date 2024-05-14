@@ -3,19 +3,20 @@ import {projectManager} from "./projects.js";
 import {getProject,getTask} from "./checkIDs.js"
 
 export class Task{
-    constructor(title,description){
+    constructor(title,description,priority){
         this.title = title;
         this.id = uuidv4();
         this.description = description;
+        this.priority = priority;
     }
 }
 //loop through each project and check for id. if id matches add task
-export function newTask(projectID,taskName,description){
+export function newTask(projectID,taskName,description,priority){
     const projects = projectManager.getProjects();
     projects.forEach((project) => {
         if(project.id === projectID){
            //console.log(project.tasks)
-            const addTask = new Task(taskName,description)
+            const addTask = new Task(taskName,description,priority)
             project.tasks.push(addTask)
         }
     });
@@ -37,6 +38,7 @@ export function removeTask(taskID){
 }
 export function editTask(updTitle,updDescription,priority,projectID,taskID){
     const projects = projectManager.getProjects()
+    console.log(priority)
     projects.forEach((project) =>{
         if(project.id === projectID){
             const tasks = project.tasks;
@@ -44,6 +46,7 @@ export function editTask(updTitle,updDescription,priority,projectID,taskID){
                 if (task.id === taskID){
                     task.title = updTitle;
                     task.description = updDescription;
+                    task.priority = priority
                 }
             })
         }

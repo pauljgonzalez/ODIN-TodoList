@@ -14,12 +14,23 @@ function createTaskFrag(ID){
                 const taskDescription = createTaskstDIVNoID("taskDescription",task.description);
                 const taskButton = createTaskCloseButton();
                 const editButton = createEditTaskButton();
-                //TODO Add edit button to edit task.title and task.descrpition posttion to right. would need to update grid and make css
-
+                let prioInner = task.priority;
+                if(task.priority == "priorityNormal"){
+                    prioInner = "Normal Priority";
+                }
+                if(task.priority == "priorityHigh"){
+                    prioInner = "High Priority";
+                }
+                if(task.priority == "priorityLow"){
+                    prioInner = "Low Priority";
+                }
+                const taskPrio = createTaskstDIVNoID("taskPriority",prioInner)
+                container.classList.add(task.priority)
                 container.append(taskTitle);
                 container.append(taskDescription);
                 container.append(taskButton)
                 container.append(editButton)
+                container.append(taskPrio)
                 frag.append(container)
             })
         }
